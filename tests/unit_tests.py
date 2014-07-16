@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    Secret Sharing
+    Useful Utils
     ~~~~~
 
     :copyright: (c) 2014 by Halfmoon Labs
