@@ -10,7 +10,54 @@
 import unittest
 from test import test_support
 
-from usefulutils import recursive_dict, scrub_dict, to_dict
+import string, binascii
+from base64 import b64encode, b64decode
+from usefulutils import recursive_dict, scrub_dict, to_dict, \
+	charset_to_int, int_to_charset, change_charset
+
+base16_chars = string.hexdigits[0:16]
+base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
+class IntToCharsetTests(unittest.TestCase):
+	def setUp(self):
+		pass
+
+	def tearDown(self):
+		pass
+
+	def test_int_to_deadbeef(self):
+		i = 3735928559
+		assert(("0x%x" % i).replace('0x', '') == int_to_charset(i, base16_chars))
+
+class CharsetToIntTests(unittest.TestCase):
+	def setUp(self):
+		pass
+
+	def tearDown(self):
+		pass
+
+	def test_deadbeef_to_int(self):
+		s = "deadbeef"
+		assert(int(s, 16) == charset_to_int(s, base16_chars))
+
+class ChangeCharsetTests(unittest.TestCase):
+	def setUp(self):
+		pass
+
+	def tearDown(self):
+		pass
+
+class ScrubDictTests(unittest.TestCase):
+	def setUp(self):
+		pass
+
+	def tearDown(self):
+		pass
+
+	def test_triple_nested_dict(self):
+		d = { "a": { "b": { "c": "" } } }
+		d = scrub_dict(d)
+		assert(len(d) == 0)
 
 class ToDictTests(unittest.TestCase):
 	def setUp(self):
@@ -54,6 +101,10 @@ class ToDictTests(unittest.TestCase):
 def test_main():
 	test_support.run_unittest(
 		ToDictTests,
+		ScrubDictTests,
+		IntToCharsetTests,
+		CharsetToIntTests,
+		ChangeCharsetTests
 	)
 
 if __name__ == '__main__':

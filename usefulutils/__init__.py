@@ -10,3 +10,4 @@
 __version__ = '0.1.0'
 
 from .dicts import recursive_dict, scrub_dict, to_dict
+from .charset import int_to_charset, charset_to_int, change_charset
