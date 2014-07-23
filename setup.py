@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='usefulutils',
-    version='0.1.1',
+    version='0.1.2',
     author='Halfmoon Labs',
     author_email='hello@halfmoonlabs.com',
     description='Generally useful tools.',

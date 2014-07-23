@@ -11,14 +11,29 @@ from collections import defaultdict
 
 recursive_dict = lambda: defaultdict(recursive_dict)
 
+def recursive_dict_to_dict(rdict):
+    d = {}
+    for (k,v) in rdict.items():
+        if isinstance(v, defaultdict):
+            d[k] = recursive_dict_to_dict(v)
+        else:
+            d[k] = v
+    return d
+
 def scrub_dict(d):
-    """ Recursively inspect a dictionary and remove all empty values.
+    """ Recursively inspect a dictionary and remove all empty values, including
+        empty strings, lists, and dictionaries.
     """
     if type(d) is dict:
         return dict(
             (k, scrub_dict(v)) for k, v in d.iteritems() if v and scrub_dict(v)
         )
-    return d
+    elif type(d) is list:
+        return [
+            scrub_dict(v) for v in d if v and scrub_dict(v)
+        ]
+    else:
+        return d
 
 def _to_json_type(obj, classkey=None):
     """ Recursively convert the object instance into a valid JSON type.

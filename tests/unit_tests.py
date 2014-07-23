@@ -54,8 +54,8 @@ class ScrubDictTests(unittest.TestCase):
 	def tearDown(self):
 		pass
 
-	def test_triple_nested_dict(self):
-		d = { "a": { "b": { "c": "" } } }
+	def test_nested_dict(self):
+		d = { "a": { "b": { "c": "", "d": [{"e": ""}] } } }
 		d = scrub_dict(d)
 		assert(len(d) == 0)
 
