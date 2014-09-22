@@ -1,26 +1,6 @@
 Utility Belt
 =============
 
-### Charsets
-
-#### Moving from string charsets to ints and vice versa
-
-```python
->>> charset_to_int('deadbeef', string.hexdigits[0:16])
-3735928559
->>> int_to_charset(3735928559, string.hexdigits[0:16])
-'deadbeef'
-```
-
-#### Changing arbitrary charsets
-
-```python
->>> change_charset('deadbeef', string.hexdigits[0:16], '01')
-'11011110101011011011111011101111'
->>> change_charset('11011110101011011011111011101111', '01', string.hexdigits[0:16])
-'deadbeef'
-```
-
 ### Dicts
 
 #### Recursive dicts
@@ -53,6 +33,26 @@ defaultdict(<function <lambda> at 0x102912b90>, {})
 >>> rectangle = Rectangle(2, 4)
 >>> to_dict(rectangle)
 {'width': 2, 'length': 4}
+```
+
+### Charsets
+
+#### Moving from string charsets to ints and vice versa
+
+```python
+>>> charset_to_int('deadbeef', string.hexdigits[0:16])
+3735928559
+>>> int_to_charset(3735928559, string.hexdigits[0:16])
+'deadbeef'
+```
+
+#### Changing arbitrary charsets
+
+```python
+>>> change_charset('deadbeef', string.hexdigits[0:16], '01')
+'11011110101011011011111011101111'
+>>> change_charset('11011110101011011011111011101111', '01', string.hexdigits[0:16])
+'deadbeef'
 ```
 
 ### Numbers
