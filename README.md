@@ -23,6 +23,8 @@ defaultdict(<function <lambda> at 0x102912b90>, {})
 #### Scrubbing dicts
 
 ```python
+>>> d
+{'a': {'b': {'c': 1, 'd': {}}}}
 >>> scrub_dict(d)
 {'a': {'b': {'c': 1}}}
 ```
