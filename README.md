@@ -1,7 +1,7 @@
 Utility Belt
 =============
 
-### Charset
+### Charsets
 
 #### Moving from string charsets to ints and vice versa
 
