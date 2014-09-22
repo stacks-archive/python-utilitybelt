@@ -1,6 +1,10 @@
 Utility Belt
 =============
 
+[![Latest Version](https://pypip.in/version/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt/)
+[![Downloads](https://pypip.in/download/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt/)
+[![License](https://pypip.in/license/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt>/)
+
 ### Dicts
 
 #### Recursive dicts
