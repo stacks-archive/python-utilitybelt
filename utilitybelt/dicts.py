@@ -9,6 +9,8 @@
 
 from collections import defaultdict
 
+""" A recursive dictionary based on the collections lib defaultdict class.
+"""
 recursive_dict = lambda: defaultdict(recursive_dict)
 
 def recursive_dict_to_dict(rdict):

@@ -21,8 +21,6 @@ def is_int(val):
     return isinstance(val, int)
 
 def hex_to_int(s):
-    if s[0:2] == '0x':
-        s = s[2:]
 	try:
 		return int(s, 16)
 	except:
