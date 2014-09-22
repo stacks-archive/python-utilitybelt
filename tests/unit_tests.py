@@ -12,7 +12,7 @@ from test import test_support
 
 import string, binascii
 from base64 import b64encode, b64decode
-from usefulutils import recursive_dict, scrub_dict, to_dict, \
+from utilitybelt import recursive_dict, scrub_dict, to_dict, \
 	charset_to_int, int_to_charset, change_charset
 
 base16_chars = string.hexdigits[0:16]

@@ -7,13 +7,13 @@ Useful Utils
 from setuptools import setup, find_packages
 
 setup(
-    name='usefulutils',
-    version='0.1.2',
+    name='utilitybelt',
+    version='0.1.3',
     author='Halfmoon Labs',
     author_email='hello@halfmoonlabs.com',
     description='Generally useful tools.',
-    keywords='dict dictionary scrub to_dict todict json',
-    url='https://github.com/onenameio/useful-utils',
+    keywords='dict dictionary scrub to_dict todict json characters charset hex',
+    url='https://github.com/onenameio/utilitybelt',
     license='MIT',
     packages=find_packages(),
     install_requires=[

@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-    Useful Utils
+    Utilitybelt
     ~~~~~
 
     :copyright: (c) 2014 by Halfmoon Labs
     :license: MIT, see LICENSE for more details.
 """
 
-import re
-import string
+import re, string
 
 def int_to_charset(val, charset):
     """ Turn a non-negative integer into a string.

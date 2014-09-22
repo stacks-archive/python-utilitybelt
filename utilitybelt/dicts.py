@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    Useful Utils
+    Utilitybelt
     ~~~~~
 
     :copyright: (c) 2014 by Halfmoon Labs
@@ -12,6 +12,8 @@ from collections import defaultdict
 recursive_dict = lambda: defaultdict(recursive_dict)
 
 def recursive_dict_to_dict(rdict):
+    """ Convert a recursive dict to a plain ol' dict.
+    """
     d = {}
     for (k,v) in rdict.items():
         if isinstance(v, defaultdict):
