@@ -19,3 +19,18 @@ Utility Belt
 
 ### Numbers
 
+```python
+>>> hex_to_int('deadbeef')
+3735928559
+>>> int_to_hex(3735928559)
+'deadbeef'
+>>> is_hex('deadbeef')
+True
+>>> is_hex('xdeadbeefx')
+False
+>>> is_int(123)
+True
+>>> is_int('deadbeef')
+False
+```
+
