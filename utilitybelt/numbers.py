@@ -18,7 +18,7 @@ def is_hex(val):
         return True
 
 def is_int(val):
-    return isinstance(val, int)
+    return isinstance(val, (int,long))
 
 def hex_to_int(s):
 	try:
