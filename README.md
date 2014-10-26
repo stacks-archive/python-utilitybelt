@@ -1,6 +1,10 @@
 Utility Belt
 =============
 
+[![Latest Version](https://pypip.in/version/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt/)
+[![Downloads](https://pypip.in/download/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt/)
+[![License](https://pypip.in/license/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt>/)
+
 ### Dicts
 
 #### Recursive dicts
@@ -19,6 +23,8 @@ defaultdict(<function <lambda> at 0x102912b90>, {})
 #### Scrubbing dicts
 
 ```python
+>>> d
+{'a': {'b': {'c': 1, 'd': {}}}}
 >>> scrub_dict(d)
 {'a': {'b': {'c': 1}}}
 ```
