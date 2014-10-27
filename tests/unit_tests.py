@@ -13,7 +13,8 @@ from test import test_support
 import string, binascii
 from base64 import b64encode, b64decode
 from utilitybelt import recursive_dict, scrub_dict, to_dict, \
-	charset_to_int, int_to_charset, change_charset
+	charset_to_int, int_to_charset, change_charset, dev_random_entropy, \
+	dev_urandom_entropy
 
 base16_chars = string.hexdigits[0:16]
 base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
@@ -98,13 +99,30 @@ class ToDictTests(unittest.TestCase):
 		d = to_dict(d)
 		assert(isinstance(d, dict))
 
+
+class EntropyTests(unittest.TestCase):
+	def setUp(self):
+		pass
+
+	def tearDown(self):
+		pass
+
+	def test_dev_urandom_entropy(self):
+		bytes16 = dev_urandom_entropy(16)
+		assert(len(bytes16) == 16)
+
+	def test_dev_random_entropy(self):
+		bytes16 = dev_random_entropy(16)
+		assert(len(bytes16) == 16)
+
 def test_main():
 	test_support.run_unittest(
 		ToDictTests,
 		ScrubDictTests,
 		IntToCharsetTests,
 		CharsetToIntTests,
-		ChangeCharsetTests
+		ChangeCharsetTests,
+		EntropyTests
 	)
 
 if __name__ == '__main__':
