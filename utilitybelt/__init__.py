@@ -7,7 +7,7 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__version__ = '0.1.6'
+__version__ = '0.1.7'
 
 from .dicts import recursive_dict, scrub_dict, to_dict, recursive_dict_to_dict
 from .charsets import int_to_charset, charset_to_int, change_charset

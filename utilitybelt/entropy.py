@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+    Utilitybelt
+    ~~~~~
+
+    :copyright: (c) 2014 by Halfmoon Labs
+    :license: MIT, see LICENSE for more details.
+"""
+
 import os, binascii
 
 def dev_urandom_entropy(numbytes):
@@ -9,7 +18,7 @@ def dev_urandom_entropy(numbytes):
 	"""
 	return os.urandom(numbytes)
 
-def dev_random_entropy(numbytes, fallback_to_urandom=False):
+def dev_random_entropy(numbytes, fallback_to_urandom=True):
 	""" Reads random bytes from the /dev/random entropy pool.
 
 		NOTE: /dev/random is a blocking pseudorandom number generator.
