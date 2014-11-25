@@ -12,9 +12,7 @@ from test import test_support
 
 import string, binascii
 from base64 import b64encode, b64decode
-from utilitybelt import recursive_dict, scrub_dict, to_dict, \
-	charset_to_int, int_to_charset, change_charset, dev_random_entropy, \
-	dev_urandom_entropy
+from utilitybelt import *
 
 base16_chars = string.hexdigits[0:16]
 base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
@@ -28,7 +26,15 @@ class IntToCharsetTests(unittest.TestCase):
 
 	def test_int_to_deadbeef(self):
 		i = 3735928559
-		assert(("0x%x" % i).replace('0x', '') == int_to_charset(i, base16_chars))
+		reference_value = ("%x" % i).replace('0x', '')
+		value = int_to_charset(i, base16_chars)
+		self.assertEqual(value, reference_value)
+
+	def test_long_to_hex(self):
+		i = 98593619870584680045363244857154607374163765192362173593200564555477131708560L
+		reference_value = hex(i).rstrip('L').lstrip('0x')
+		value = int_to_charset(i, base16_chars)
+		self.assertEqual(value, reference_value)
 
 class CharsetToIntTests(unittest.TestCase):
 	def setUp(self):
@@ -39,7 +45,37 @@ class CharsetToIntTests(unittest.TestCase):
 
 	def test_deadbeef_to_int(self):
 		s = "deadbeef"
-		assert(int(s, 16) == charset_to_int(s, base16_chars))
+		value = charset_to_int(s, base16_chars)
+		reference_value = int(s, 16)
+		self.assertEqual(value, reference_value)
+
+class NumbersTests(unittest.TestCase):
+	def setUp(self):
+		pass
+
+	def tearDown(self):
+		pass
+
+	def test_int_to_hex_with_long(self):
+		i = 98593619870584680045363244857154607374163765192362173593200564555477131708560L
+		reference_value = hex(i)
+		reference_value = reference_value.rstrip('L').lstrip('0x')
+		value = int_to_hex(i)
+		self.assertEqual(value, reference_value)
+
+	def test_hex_to_int_with_64bit_string(self):
+		s = 'd9fa02e46cd3867f51279dfae592d3706022ee93c175b49c30c8c962722fc890'
+		reference_value = int(s, 16)
+		value = hex_to_int(s)
+		self.assertEqual(value, reference_value)
+
+	def test_is_int_with_long(self):
+		i = 98593619870584680045363244857154607374163765192362173593200564555477131708560L
+		self.assertTrue(is_int(i))
+
+	def test_is_hex_with_64bit_string(self):
+		s = 'd9fa02e46cd3867f51279dfae592d3706022ee93c175b49c30c8c962722fc890'
+		self.assertTrue(is_hex(s))
 
 class ChangeCharsetTests(unittest.TestCase):
 	def setUp(self):
@@ -58,7 +94,7 @@ class ScrubDictTests(unittest.TestCase):
 	def test_nested_dict(self):
 		d = { "a": { "b": { "c": "", "d": [{"e": ""}] } } }
 		d = scrub_dict(d)
-		assert(len(d) == 0)
+		self.assertEqual(len(d), 0)
 
 class ToDictTests(unittest.TestCase):
 	def setUp(self):
@@ -73,32 +109,31 @@ class ToDictTests(unittest.TestCase):
 				self.name = "My Class"
 		thing = Thing()
 		d = to_dict(thing)
-		assert(isinstance(d, dict))
-		assert('name' in d and d['name'] == "My Class")
+		self.assertTrue(isinstance(d, dict))
+		self.assertEqual('name' in d and d['name'], "My Class")
 
 	def test_str_to_dict(self):
 		s = "a"
 		try:
 			d = to_dict(a)
 		except:
-			assert(True)
+			self.assertTrue(True)
 		else:
-			assert(False)
+			self.assertTrue(False)
 
 	def test_int_to_dict(self):
 		i = 1
 		try:
 			d = to_dict(i)
 		except:
-			assert(True)
+			self.assertTrue(True)
 		else:
-			assert(False)
+			self.assertTrue(False)
 
 	def test_dict_to_dict(self):
 		d = {}
 		d = to_dict(d)
-		assert(isinstance(d, dict))
-
+		self.assertTrue(isinstance(d, dict))
 
 class EntropyTests(unittest.TestCase):
 	def setUp(self):
@@ -109,11 +144,11 @@ class EntropyTests(unittest.TestCase):
 
 	def test_dev_urandom_entropy(self):
 		bytes16 = dev_urandom_entropy(16)
-		assert(len(bytes16) == 16)
+		self.assertEqual(len(bytes16), 16)
 
 	def test_dev_random_entropy(self):
 		bytes16 = dev_random_entropy(16)
-		assert(len(bytes16) == 16)
+		self.assertEqual(len(bytes16), 16)
 
 def test_main():
 	test_support.run_unittest(
@@ -122,6 +157,7 @@ def test_main():
 		IntToCharsetTests,
 		CharsetToIntTests,
 		ChangeCharsetTests,
+		NumbersTests,
 		EntropyTests
 	)
 
