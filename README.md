@@ -16,7 +16,7 @@ Utility Belt
 '874ac235edfa658bd46c763079acc096'
 ```
 
-### Numbers
+### Base16
 
 ```python
 >>> from utilitybelt import hex_to_int, int_to_hex, is_hex, is_int
