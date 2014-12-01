@@ -49,7 +49,7 @@ class CharsetToIntTests(unittest.TestCase):
 		reference_value = int(s, 16)
 		self.assertEqual(value, reference_value)
 
-class NumbersTests(unittest.TestCase):
+class Base16Tests(unittest.TestCase):
 	def setUp(self):
 		pass
 
@@ -64,7 +64,7 @@ class NumbersTests(unittest.TestCase):
 		self.assertEqual(value, reference_value)
 
 	def test_hex_to_int_with_64bit_string(self):
-		s = 'd9fa02e46cd3867f51279dfae592d3706022ee93c175b49c30c8c962722fc890'
+		s = "d9fa02e46cd3867f51279dfae592d3706022ee93c175b49c30c8c962722fc890"
 		reference_value = int(s, 16)
 		value = hex_to_int(s)
 		self.assertEqual(value, reference_value)
@@ -73,9 +73,23 @@ class NumbersTests(unittest.TestCase):
 		i = 98593619870584680045363244857154607374163765192362173593200564555477131708560L
 		self.assertTrue(is_int(i))
 
+	def test_is_valid_int_with_string(self):
+		i = "98593619870584680045363244857154607374163765192362173593200564555477131708560"
+		self.assertTrue(is_valid_int(i))
+
 	def test_is_hex_with_64bit_string(self):
-		s = 'd9fa02e46cd3867f51279dfae592d3706022ee93c175b49c30c8c962722fc890'
+		s = "d9fa02e46cd3867f51279dfae592d3706022ee93c175b49c30c8c962722fc890"
 		self.assertTrue(is_hex(s))
+
+	def test_hex_to_charset(self):
+		s = "d9fa02e46cd3867f51279dfae592d3706022ee93c175b49c30c8c962722fc890"
+		s2 = hex_to_charset(s, string.digits)
+		self.assertTrue(is_valid_int(s2))
+
+	def test_charset_to_hex(self):
+		s = "98593619870584680045363244857154607374163765192362173593200564555477131708560"
+		s2 = charset_to_hex(s, string.digits)
+		self.assertTrue(is_hex(s2))
 
 class ChangeCharsetTests(unittest.TestCase):
 	def setUp(self):
@@ -157,7 +171,7 @@ def test_main():
 		IntToCharsetTests,
 		CharsetToIntTests,
 		ChangeCharsetTests,
-		NumbersTests,
+		Base16Tests,
 		EntropyTests
 	)
 
