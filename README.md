@@ -1,9 +1,9 @@
 Utility Belt
 =============
 
-[![Latest Version](https://pypip.in/version/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt/)
-[![Downloads](https://pypip.in/download/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt/)
-[![License](https://pypip.in/license/utilitybelt/badge.svg)](https://pypi.python.org/pypi/utilitybelt>/)
+[![PyPI](https://img.shields.io/pypi/v/utilitybelt.svg)](https://pypi.python.org/pypi/utilitybelt/)
+[![PyPI](https://img.shields.io/pypi/dm/utilitybelt.svg)](https://pypi.python.org/pypi/utilitybelt/)
+[![PyPI](https://img.shields.io/pypi/l/utilitybelt.svg)](https://github.com/onenameio/utilitybelt/blob/master/LICENSE)
 
 ### Entropy
 
