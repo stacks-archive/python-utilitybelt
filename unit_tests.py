@@ -11,6 +11,7 @@ import unittest
 from test import test_support
 
 import os
+import sys
 import string
 import binascii
 from base64 import b64encode, b64decode
@@ -21,7 +22,7 @@ from utilitybelt import int_to_charset, charset_to_int, change_charset, \
     base16_chars, base58_chars, base32_chars, zbase32_chars, base64_chars
 from utilitybelt import hex_to_int, int_to_hex, hex_to_charset, \
     charset_to_hex, hexpad, is_hex, is_int, is_valid_int
-from utilitybelt import dev_urandom_entropy, dev_random_entropy
+from utilitybelt import dev_urandom_entropy, dev_random_entropy, secure_randint
 
 
 class IntToCharsetTests(unittest.TestCase):
@@ -186,6 +187,18 @@ class EntropyTests(unittest.TestCase):
         os.name = 'nt'
         bytes16 = dev_random_entropy(16)
         self.assertEqual(len(bytes16), 16)
+
+    def test_random_integer(self):
+        min_value, max_value = 0, sys.maxint
+        r = secure_randint(min_value, max_value)
+        self.assertTrue(r > min_value)
+        self.assertTrue(r < max_value)
+
+    def test_random_integer_larger_than_maxint(self):
+        min_value, max_value = 0, sys.maxint*2
+        r = secure_randint(min_value, max_value)
+        self.assertTrue(r > min_value)
+        self.assertTrue(r < max_value)
 
 
 def test_main():
