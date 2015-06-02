@@ -3,7 +3,7 @@
     Utilitybelt
     ~~~~~
 
-    :copyright: (c) 2014 by Halfmoon Labs
+    :copyright: (c) 2015 by Halfmoon Labs
     :license: MIT, see LICENSE for more details.
 """
 
