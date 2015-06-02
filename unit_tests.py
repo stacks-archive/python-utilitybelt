@@ -24,10 +24,6 @@ from utilitybelt import hex_to_int, int_to_hex, hex_to_charset, \
 from utilitybelt import dev_urandom_entropy, dev_random_entropy
 
 
-base16_chars = string.hexdigits[0:16]
-base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-
-
 class IntToCharsetTests(unittest.TestCase):
     def setUp(self):
         pass
@@ -42,7 +38,8 @@ class IntToCharsetTests(unittest.TestCase):
         self.assertEqual(value, reference_value)
 
     def test_long_to_hex(self):
-        i = 98593619870584680045363244857154607374163765192362173593200564555477131708560L
+        i = int("985936198705846800453632448571546073741637651923621735932"
+                "00564555477131708560")
         reference_value = hex(i).rstrip('L').lstrip('0x')
         value = int_to_charset(i, base16_chars)
         self.assertEqual(value, reference_value)
@@ -70,7 +67,8 @@ class Base16Tests(unittest.TestCase):
         pass
 
     def test_int_to_hex_with_long(self):
-        i = 98593619870584680045363244857154607374163765192362173593200564555477131708560L
+        i = int("985936198705846800453632448571546073741637651923621735932"
+                "00564555477131708560")
         reference_value = hex(i)
         reference_value = reference_value.rstrip('L').lstrip('0x')
         value = int_to_hex(i)
@@ -83,11 +81,13 @@ class Base16Tests(unittest.TestCase):
         self.assertEqual(value, reference_value)
 
     def test_is_int_with_long(self):
-        i = 98593619870584680045363244857154607374163765192362173593200564555477131708560L
+        i = int("985936198705846800453632448571546073741637651923621735932"
+                "00564555477131708560")
         self.assertTrue(is_int(i))
 
     def test_is_valid_int_with_string(self):
-        i = "98593619870584680045363244857154607374163765192362173593200564555477131708560"
+        i = ("9859361987058468004536324485715460737416376519236217359320056"
+             "4555477131708560")
         self.assertTrue(is_valid_int(i))
 
     def test_is_hex_with_64bit_string(self):
@@ -100,7 +100,8 @@ class Base16Tests(unittest.TestCase):
         self.assertTrue(is_valid_int(s2))
 
     def test_charset_to_hex(self):
-        s = "98593619870584680045363244857154607374163765192362173593200564555477131708560"
+        s = ("9859361987058468004536324485715460737416376519236217359320056"
+             "4555477131708560")
         s2 = charset_to_hex(s, string.digits)
         self.assertTrue(is_hex(s2))
 
