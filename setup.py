@@ -8,12 +8,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='utilitybelt',
-    version='0.2.3',
+    version='0.2.4',
     author='Halfmoon Labs',
     author_email='hello@halfmoonlabs.com',
-    description='Generally useful tools.',
+    description='Generally useful tools. A python utility belt.',
     keywords=('dict dictionary scrub to_dict todict json characters charset '
-              'hex entropy'),
+              'hex entropy utility'),
     url='https://github.com/onenameio/utilitybelt',
     license='MIT',
     packages=find_packages(),

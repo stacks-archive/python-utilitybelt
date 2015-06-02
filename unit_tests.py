@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    Useful Utils
+    Utilitybelt
     ~~~~~
 
-    :copyright: (c) 2014 by Halfmoon Labs
+    :copyright: (c) 2015 by Halfmoon Labs
     :license: MIT, see LICENSE for more details.
 """
 
@@ -14,7 +14,15 @@ import os
 import string
 import binascii
 from base64 import b64encode, b64decode
-from utilitybelt import *
+
+from utilitybelt import recursive_dict, scrub_dict, to_dict, \
+    recursive_dict_to_dict
+from utilitybelt import int_to_charset, charset_to_int, change_charset, \
+    base16_chars, base58_chars, base32_chars, zbase32_chars, base64_chars
+from utilitybelt import hex_to_int, int_to_hex, hex_to_charset, \
+    charset_to_hex, hexpad, is_hex, is_int, is_valid_int
+from utilitybelt import dev_urandom_entropy, dev_random_entropy
+
 
 base16_chars = string.hexdigits[0:16]
 base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
