@@ -9,6 +9,7 @@
 
 import os
 import binascii
+import random
 
 
 def dev_urandom_entropy(numbytes):
@@ -35,3 +36,14 @@ def dev_random_entropy(numbytes, fallback_to_urandom=True):
     if os.name == 'nt' and fallback_to_urandom:
         return dev_urandom_entropy(numbytes)
     return open("/dev/random", "rb").read(numbytes)
+
+
+def secure_randint(min_value, max_value, system_random=None):
+    """ Return a random integer N such that a <= N <= b.
+
+        Uses SystemRandom for generating random numbers.
+        (which uses os.urandom(), which pulls from /dev/urandom)
+    """
+    if not system_random:
+        system_random = random.SystemRandom()
+    return system_random.randint(min_value, max_value)
