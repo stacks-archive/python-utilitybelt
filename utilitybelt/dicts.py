@@ -13,16 +13,18 @@ from collections import defaultdict
 """
 recursive_dict = lambda: defaultdict(recursive_dict)
 
+
 def recursive_dict_to_dict(rdict):
     """ Convert a recursive dict to a plain ol' dict.
     """
     d = {}
-    for (k,v) in rdict.items():
+    for (k, v) in rdict.items():
         if isinstance(v, defaultdict):
             d[k] = recursive_dict_to_dict(v)
         else:
             d[k] = v
     return d
+
 
 def scrub_dict(d):
     """ Recursively inspect a dictionary and remove all empty values, including
@@ -39,6 +41,7 @@ def scrub_dict(d):
     else:
         return d
 
+
 def _to_json_type(obj, classkey=None):
     """ Recursively convert the object instance into a valid JSON type.
     """
@@ -53,8 +56,8 @@ def _to_json_type(obj, classkey=None):
         return [_to_json_type(v, classkey) for v in obj]
     elif hasattr(obj, "__dict__"):
         data = dict([
-            (key, _to_json_type(value, classkey)) 
-            for key, value in obj.__dict__.iteritems() 
+            (key, _to_json_type(value, classkey))
+            for key, value in obj.__dict__.iteritems()
             if not callable(value) and not key.startswith('_')
         ])
         if classkey is not None and hasattr(obj, "__class__"):
@@ -62,6 +65,7 @@ def _to_json_type(obj, classkey=None):
         return data
     else:
         return obj
+
 
 def to_dict(obj):
     """ Convert an instance of an object into a dict.

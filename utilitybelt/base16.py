@@ -13,17 +13,20 @@ from .charsets import change_charset
 B16_CHARS = string.hexdigits[0:16]
 B16_REGEX = '^[0-9a-f]*$'
 
+
 def hex_to_int(s):
     try:
         return int(s, 16)
     except:
         raise ValueError("Value must be in hex format")
 
+
 def int_to_hex(i):
     try:
         return hex(i).rstrip('L').lstrip('0x')
     except:
         raise ValueError("Value must be in int format")
+
 
 def is_hex(s):
     # make sure that s is a string
@@ -40,8 +43,10 @@ def is_hex(s):
     else:
         return True
 
+
 def is_int(i):
     return isinstance(i, (int,long))
+
 
 def is_valid_int(i):
     if is_int(i):
@@ -55,11 +60,14 @@ def is_valid_int(i):
             return True
     return False
 
+
 def hexpad(x):
     return ('0' * (len(x) % 2)) + x
 
+
 def charset_to_hex(s, original_charset):
     return hexpad(change_charset(s, original_charset, B16_CHARS))
+
 
 def hex_to_charset(s, destination_charset):
     if not is_hex(s):
