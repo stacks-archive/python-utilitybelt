@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='utilitybelt',
-    version='0.2.4',
+    version='0.2.6',
     author='Halfmoon Labs',
     author_email='hello@halfmoonlabs.com',
     description='Generally useful tools. A python utility belt.',

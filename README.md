@@ -1,6 +1,7 @@
 Utility Belt
 =============
 
+[![Travis](https://img.shields.io/travis/onenameio/utilitybelt.svg)](https://travis-ci.org/onenameio/utilitybelt)
 [![PyPI](https://img.shields.io/pypi/v/utilitybelt.svg)](https://pypi.python.org/pypi/utilitybelt/)
 [![PyPI](https://img.shields.io/pypi/dm/utilitybelt.svg)](https://pypi.python.org/pypi/utilitybelt/)
 [![PyPI](https://img.shields.io/pypi/l/utilitybelt.svg)](https://github.com/onenameio/utilitybelt/blob/master/LICENSE)
