@@ -1,7 +1,7 @@
 Utility Belt
 =============
 
-[![CircleCI](https://img.shields.io/circleci/project/blockstack/python-utilitybelt/master.svg)](https://circleci.com/gh/blockstack/python-utilitybelt)
+[![CircleCI](https://img.shields.io/circleci/project/blockstack/python-utilitybelt/master.svg)](https://circleci.com/gh/blockstack/python-utilitybelt/tree/master)
 [![PyPI](https://img.shields.io/pypi/v/utilitybelt.svg)](https://pypi.python.org/pypi/utilitybelt/)
 [![PyPI](https://img.shields.io/pypi/dm/utilitybelt.svg)](https://pypi.python.org/pypi/utilitybelt/)
 [![PyPI](https://img.shields.io/pypi/l/utilitybelt.svg)](https://github.com/onenameio/utilitybelt/blob/master/LICENSE)
